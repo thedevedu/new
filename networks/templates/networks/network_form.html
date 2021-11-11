@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<!-- Main Section -->
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="card" style="max-width: 20rem;">
+            <div class="card-body">
+                <form class="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <!-- Input:Text -->
+                    <div class="">
+                        <label for="formInput#text">{{field.label}}</label>
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn-outline-dark" type="submit" value="Submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

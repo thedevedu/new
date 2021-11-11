@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="">
+    <div class="">
+      <div class="">
+        <div class="">
+          <a class="" href="{% url 'edit-account' %}"><i class=""></i>
+            Edit</a>
+          <img class="" src="{{profile.imageURL}}" />
+          <h2 class="">{{profile.name}}</h2>
+          <p class="">{{profile.short_into}}</p>
+          <p class="">Based in {{profile.location}}</p>
+
+          </ul>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="">
+        <h3 class="">About Me</h3>
+        <p class="">{{profile.bio}}</p>
+      </div>
+
+
+      <div class="">
+        <h3 class="">Networks</h3>
+        <a class="" href="{% url 'create-network' %}"><i
+            class=""></i> Add Network</a>
+      </div>
+
+      <table class="">
+        {% for network in networks %}
+        <tr>
+          <td class="">
+            <a href="{% url 'network' network.id %}"><img src="{{network.imageURL}}" alt="Network Thumbnail" /></a>
+          </td>
+          <td class="">
+            <a href="{% url 'network' network.id %}">{{network.title}}</a>
+            <p>{{network.description|slice:"150"}}</p>
+          </td>
+          <td class="">
+            <a class="" href="{% url 'update-network' network.id %}"><i
+                class="im im-edit"></i> Edit</a>
+            <a class=""
+              href="{% url 'delete-network'  network.id %}?next=/account"><i class=""></i>
+              Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

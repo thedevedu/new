@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row col-md-12">
+    <p class="ml-auto">
+    <a href="{% url 'create-network' %}" class="btn btn-primary btn-xs"><b>+</b> Add new gift</a>
+    </p>
+    <table class="table table-striped">
+    <thead>
+            <tr class="text-center">
+            <th>Title</th>
+            <th>Copy Link</th>
+            <th>Action</th>
+        </tr>
+        
+    </thead>
+
+      {% for network in page_obj %}
+      <tr class="text-center">
+        <td class="">
+        </td>
+        <td class="">
+          <a href="{% url 'network' network.id %}">{{network.id}}</a>
+        </td>
+
+        <td>
+          <a class='btn btn-info btn-xs' href="{% url 'update-network' network.id %}">
+          <span class="glyphicon glyphicon-edit">View Status
+          </span>
+          </a> 
+          <a href="{% url 'delete-network'  network.id %}?next=/account" class="btn btn-danger btn-xs">
+          <span class="glyphicon glyphicon-remove">Delete
+          </span>
+          </a>
+        </td>
+        
+      </tr>
+      
+      {% endfor %}
+      
+    </table>
+    </div>
+    <div class="pagination">
+      <span class="mx-auto">
+          {% if page_obj.has_previous %}
+              <a class="btn btn-danger" href="?page=1">&laquo; first</a>
+              <a class="btn btn-danger" href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+
+          <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+
+          {% if page_obj.has_next %}
+              <a class="btn btn-danger" href="?page={{ page_obj.next_page_number }}">next</a>
+              <a class="btn btn-danger" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+    </div>
+</div>
+  
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="card" style="width: 20rem; max-width: 20rem;">
+            <div class="card-body">
+                <div>
+                    <h3>Register an Account</h3>
+                </div>
+                <br />
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label>{{field.label}}</label>
+                        {{field}}
+                    </div>
+
+                        {% for error in field.errors %}
+                        <p style="color: red;">{{error}}</p>
+                        {% endfor %}
+                              
+                    {% endfor %}
+                    <div>
+                        <Button type="submit" class="btn btn-block btn-outline-dark">Register</Button>
+                    </div>
+                </form>
+                <br />
+                <div>
+                    <p>Already have an Account?
+                    <a href="{% url 'login' %}">Log In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

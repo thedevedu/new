@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container" style="padding-top:10px;">
+  <div class="row col-md-12" style="margin:0;">
+    <table class="table table-striped">
+    <p class="ml-auto">
+      <a href="{% url 'create-network' %}" class="btn btn-outline-dark btn-xs"><b>+</b> Add new gift</a>
+    </p>
+    <thead>
+        <tr class="text-center">
+            <th>Info</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+      {% for network in page_obj %}
+      <tr class="text-left">
+        <td class="" style="word-wrap: break-word; max-width: 150px;">
+          <span>
+            <label style="font-weight: bold;">Gift Link(Copy and Share):</label>
+            <span style="color:red;">
+            <input class="form-control" type="text" value="J.gift/{{network.id}}" id="{{network.id}}" readonly>
+          </span>
+          <br />
+          <span>
+            <label style="font-weight: bold;">Title:</label>
+            {{network.title}}
+          </span>
+          <br />
+          <span>
+            <label style="font-weight: bold;">Description:</label>
+            {{network.description}}
+          </span>
+          <br />
+          <span>
+            <label style="font-weight: bold;">created:</label>
+            {{network.created}}
+          </span>
+          <br />
+          <span>
+            <label style="font-weight: bold;">Page Views:</label>
+            {{network.created}}
+          </span>
+          <br />
+          <span>
+            <label style="font-weight: bold;">After seeing this page, I decided to believe in J.gift:</label>
+            {{network.created}}
+          </span>
+        </td>
+
+        <td style="max-width: 100px;">
+          <button class ="btn btn-outline-dark" value="{{network.id}}" onclick="Hello(this.value)">Copy Link</button>
+          <a class='btn btn-outline-dark btn-xs' href="{% url 'network' network.id %}">
+            <span class="glyphicon glyphicon-edit">View Page
+            </span>
+          </a> 
+          <a class='btn btn-outline-dark btn-xs' href="{% url 'update-network' network.id %}">
+          <span class="glyphicon glyphicon-edit">Edit
+          </span>
+          </a> 
+          <a href="{% url 'delete-network' network.id %}?next=/user/account" class="btn btn-outline-dark btn-xs">
+          <span class="glyphicon glyphicon-remove">Delete
+          </span>
+          </a>
+        </td>
+      </tr>
+      
+      {% endfor %}
+      
+    </table>
+    </div>
+    {% include 'pagination.html' %}
+</div>
+{% endblock %}

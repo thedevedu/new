@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- Main Section -->
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="card" style="width: 20rem; max-width: 20rem;">
+            {% if validlink %}
+            <div class="card-body">
+                <h3>Enter new password</h3>
+
+                <p>Please enter your new password twice so we can verify you typed it in correctly.</p>
+
+                <br>
+                <style>
+                    ul{
+                    list-style-type:none;
+                    }
+                </style>
+                <form class="form" method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button class="btn btn-block btn-outline-dark" type="submit">Reset</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="card-body">
+                Expired Link
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

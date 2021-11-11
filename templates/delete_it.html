@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:10rem">
+        <div class="card" style="max-width: 20rem;">
+            <div class="card-body">
+                <br />
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <p>Are you sure you want to delete "{{object}}"?</p>
+                    <a class="btn btn-outline-dark" href="{{request.GET.next}}">Go Back</a>
+                    <button class="btn btn-outline-dark" type="submit" value="Confirm">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
