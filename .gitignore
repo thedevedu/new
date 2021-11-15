@@ -118,11 +118,9 @@ GitHub.sublime-settings
 aws_key.pem
 commands.txt
 Dockerfile
+Dockerfilex
 docker-compose.yml
 test.py
-requirements.txt
 
 data/
-myadmin/migrations
-networks/migrations
-users/migrations
+*/migrations
