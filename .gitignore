@@ -124,3 +124,4 @@ test.py
 
 data/
 */migrations
+.gitignore
