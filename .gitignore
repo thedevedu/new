@@ -125,3 +125,4 @@ test.py
 data/
 */migrations
 .gitignore
+nginx.conf
