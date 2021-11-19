@@ -123,6 +123,5 @@ docker-compose.yml
 test.py
 
 data/
-*/migrations
 .gitignore
 nginx.conf
