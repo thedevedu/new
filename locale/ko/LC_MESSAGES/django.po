@@ -20,7 +20,7 @@ msgstr ""
 
 #: networks\templates\networks\gift.html:11
 msgid "jesusgift"
-msgstr "주 예수를 믿으라 그리하면 너와 내 집이 구원을 "
+msgstr "주 예수를 믿으라 그리하면 너와 내 집이 구원을 얻으리라"
 
 #: .\gift\settings.py:27
 msgid "Korean"
